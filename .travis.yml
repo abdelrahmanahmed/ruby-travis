@@ -6,7 +6,7 @@ services:
 env:
   - DB=mysql
 script: 
-  - RAILS_ENV=test bundle exec rake db:schema --trace
+  - RAILS_ENV=test bundle exec rake db:schema:load --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
