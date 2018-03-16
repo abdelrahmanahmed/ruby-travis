@@ -10,16 +10,16 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql12
-  database: myapp_test
-  username: travis
+  adapter: mysql2
   encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: 
+  socket: /var/lib/mysql/mysql.sock
 
 development:
-  adapter: mysql12
-  database: myapp_test
-  username: travis
-  encoding: utf8
+  <<: *default
+  database: Yalla-Notlop_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,7 +50,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: mysql12
-  database: myapp_test
-  username: travis
-  encoding: utf8
+  <<: *default
+  database: Yalla-Notlop_production
+  username: Yalla-Notlop
+  password: <%= ENV['YALLA-NOTLOP_DATABASE_PASSWORD'] %>

@@ -3,12 +3,11 @@ rvm:
   - "2.4.3"
 services:
   - mysql
-env:
-  - DB=mysql
-script: 
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+
 before_script:
-  - mysql -e 'create database myapp_test'
-bundler_args: --binstubs=./bundler_stubs
+  - bundle exec rake db:create --all
+  - bundle exec rake db:migrate
+script: 
+  - bundle exec rake ci:tests
+
+
