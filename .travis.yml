@@ -10,8 +10,6 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - mysql -e 'create database myapp_test'
-
-    - cp config/database.travis.yml config/database.yml
-    - mysql -e 'create database trado_test_db'      
-    - export DISPLAY=:99.0
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database myapp_test'      
+  - export DISPLAY=:99.0
