@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - "2.4.3"
+services:
+  - mysql
 env:
   - DB=mysql
 script: 
