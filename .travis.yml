@@ -11,6 +11,6 @@ before_script:
   - export DISPLAY=:99.0
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:clone_structure
+  - bundle exec rake db:myapp_test:clone_structure
   - bundle exec rspec spec/
 
