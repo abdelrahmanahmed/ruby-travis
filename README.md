@@ -1,6 +1,6 @@
 # README
 
-https://travis-ci.org/abdelrahmanahmed/ruby-travis.svg?branch=master
+[![Build Status](https://travis-ci.org/abdelrahmanahmed/ruby-travis.svg?branch=master)](https://travis-ci.org/abdelrahmanahmed/ruby-travis)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
