@@ -50,7 +50,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: Yalla-Notlop_production
-  username: Yalla-Notlop
-  password: <%= ENV['YALLA-NOTLOP_DATABASE_PASSWORD'] %>
+  adapter: mysql12
+  database: myapp_test
+  username: travis
+  encoding: utf8
