@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <div class="col-md-3 text-left pagination">
+  <h3>Order:</h3>
+    <table class="table table-hover">
+      <tbody>
+          <tr class="table-active">
+            <td>Type:</td>
+            <td><%= @order.orderType %></td>
+          </tr>
+          <tr class="table-active">
+            <td>Restaurant:</td>
+            <td> <%= @order.orderFrom %></td>
+          </tr>
+          <tr class="table-active">
+            <td>Menu Image:</td>        
+            <td>  <%= image_tag @order.image.url(:medium) %></td>
+          </tr>
+          <tr class="table-active">
+            <td>Created By:</td>        
+            <td><%= @order.user.name %></td>
+          </tr>
+          <tr class="table-active">
+            <td>Invited Users:</td>  
+            <td>  <ul>    
+            <% @invited_friends.each do |f| %>
+            <li><%= f.name %></li>
+            <% end %> </ul>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div> -->
+<div class="col-md-8 text-left">
+  <h3>Order Details:</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>Person:</td>
+          <td>Item:</td>
+          <td>Amount:</td>
+          <td>Price:</td>
+          <td>Comment:</td> 
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.items.each do |item| %>
+          <tr class="table-active">
+            <td><%= item.user.name %></td>
+            <td><%= item.item %></td>
+            <td><%= item.amount %></td>   
+            <td><%= item.price %></td>  
+            <td><%= item.comment %></td> 
+            <td><%= link_to 'Destroy Item', [item.order, item],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }  %></td>              
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-8 text-left">
+  <h3>Add Item:</h3>
+  <%= form_with(model: [ @order, @order.items.build ], local: true) do |form| %>
+  <%= form.hidden_field 'user_id' , value: current_user.id %> 
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td><%= form.label :item %></td>
+          <td><%= form.label :amount %></td>
+          <td><%= form.label :price %></td>
+          <td><%= form.label :comment %></td>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="table-active">
+            <td><%= form.text_field :item %></td>
+            <td><%= form.number_field :amount %></td>
+            <td><%= form.number_field :price %></td>   
+            <td><%= form.text_area :comment %></td>  
+            <td><%= form.submit %></td>            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  
+  
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- stylesheets -->
+  <%= stylesheet_link_tag "signup.css" %>
+  
+  <!-- google fonts  -->
+  <link href="//fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+</head>
+<body>
+  <div class="w3ls-banner">
+  <div class="heading">
+    <h1>Sign Up Form</h1>
+  </div>
+    <div class="container">
+      <div class="heading">
+        <h2>Please Enter Your Details</h2>
+        <p>Fill the application form below and submit.</p>
+      </div>
+      <div class="agile-form">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true } ) do |f| %>
+          <%= devise_error_messages! %>
+          <ul class="field-list">
+
+            <li class="name">
+              <label class="form-label"> Name <span class="form-required"> * </span></label>
+              <div class="form-input add">
+                <span class="form-sub-label">
+                   <%= f.text_field :name, autofocus: true, placeholder: 'User Name' %>
+              </div>
+            </li>
+
+            <li> 
+              <label class="form-label"> E-Mail Address <span class="form-required"> * </span></label>
+              <div class="form-input">
+                <%= f.email_field :email, placeholder: 'Email', autocomplete: "email" %>
+              </div>
+            </li>
+
+            <li> 
+              <label class="form-label">Image<span class="form-required"> * </span></label>
+              <div class="form-input">
+                <%= f.file_field :image %>
+              </div>
+            </li>
+
+            <li>
+              <label class="form-label"> Password <span class="form-required"> * </span></label>
+              <div class="form-input">
+                <span class="form-sub-label">
+                <%= f.password_field :password,placeholder: 'Password', autocomplete: "off" %>
+                </span>
+                <span class="form-sub-label">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+              </span>
+                
+              </div>
+            </li>
+
+            <li>
+              <label class="form-label"> Password Confirmation <span class="form-required"> * </span></label>
+              <div class="form-input">
+                  <%= f.password_field :password_confirmation,placeholder: 'Password Confirmation', autocomplete: "off" %>
+              </div>
+            </li>
+            </li>
+          </ul>
+          <div class="submit_btn">
+             <%= f.submit "Sign up" %>
+          </div>
+          <div style="text-align: center;"><%= render "devise/shared/links" %></div> 
+          
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</body>
+</html>

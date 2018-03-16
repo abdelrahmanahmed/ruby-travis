@@ -1,0 +1,27 @@
+<%= form_with(model: friendship, local: true) do |form| %>
+  
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :friendship_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :friend_id %>
+    <%= form.number_field :friend_id, id: :friendship_friend_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :create %>
+    <%= form.text_field :create, id: :friendship_create %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destroy %>
+    <%= form.text_field :destroy, id: :friendship_destroy %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

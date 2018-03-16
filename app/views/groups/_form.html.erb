@@ -1,0 +1,27 @@
+<div class="w3-agileits-subscribe-form col-md-12">
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <!--<%= form.label :user_id %>-->
+     <% form.hidden_field :user_id, id: :group_user_id , value: :user_id%>
+   <!-- <%= form.hidden_field :user_id, id: :group_user_id  , value: :user_id%>-->
+  </div>
+
+  <div class="field">
+    <%= form.text_field :name, id: :group_name %>
+  
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

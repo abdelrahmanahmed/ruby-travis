@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_user: 1
+  to_user: 1
+  status: 1
+  order: one
+
+two:
+  from_user: 1
+  to_user: 1
+  status: 1
+  order: two

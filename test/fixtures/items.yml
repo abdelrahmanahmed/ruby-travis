@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  amount: 1
+  price: 1.5
+  comment: MyText
+  user: one
+  order: one
+
+two:
+  item: MyString
+  amount: 1
+  price: 1.5
+  comment: MyText
+  user: two
+  order: two

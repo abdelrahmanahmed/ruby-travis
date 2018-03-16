@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YallaNotlop</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div class="banner jarallax">
+		<!-- agileinfo-dot -->
+		<div class="agileinfo-dot">
+			<div class="head">
+				<div class="head-nav-grids">
+					<div class="navbar-top">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								 <div class="navbar-brand logo ">
+									<h1><a href="/home/index.html">Yalla <span>Notlob</span></a></h1>
+								</div>
+							</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+							 <ul class="nav navbar-nav link-effect-4 " >
+							<li class="active"><%= link_to "Home", root_path %> </li>
+								<li><%= link_to "Freinds", friendships_path %></li>
+								<li><%= link_to "Groups", groups_path %></li>
+								<li><%= link_to "Orders", orders_path %></li>
+							  </ul>
+							</div><!-- /.navbar-collapse -->
+						</div>
+			
+					<div class="header-left">
+						<ul>
+							<% if user_signed_in? %>
+							<li><%=image_tag(current_user.image.url, :width => 50, :height => 50, :crop => :fill) %><%= link_to "#{current_user.name}", edit_user_registration_path %>
+
+							<li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+            <% else %>
+              <li><%= link_to('Login', new_user_session_path) %></li> 
+              <li><%= link_to('Sign Up', new_user_registration_path) %></li>
+            <% end %>
+							<li><img class="fa fa-envelope" src="../assets/not.png" height="50" width="50"></img> <a href="#"></a></li>
+							
+						</ul>
+					</div>
+					<div class="clearfix"></div>	
+				</div>
+			</div>
+			<!-- <div class="w3-agile-main-heading">
+				<h2>Orders</h2>
+			</div> -->
+		</div>
+		<!-- //agileinfo-dot -->
+	</div>
+	<div class="clearfix"> </div>
+			
+    <%= yield %>
+<div class="clearfix"> </div>			
+    <div class="w3-agile-footer">
+		<div class="container">
+			<div class="footer-grids">
+				<div class="col-md-6 footer-grid">
+					<div class="footer-grid-heading">
+						<h3><a href="index.html">Yalla <span>Notlob</span></a></h3>
+					</div>
+					<div class="agile-footer-info">
+						<p>Hi this a simple web app that allow us to invite our frindes in ITI to lunch </p>
+					</div>
+				</div>
+				
+				<div class="col-md-6 footer-grid" style="text-align:center;">
+					<div class="footer-grid-heading center">
+						<h4>Navigation</h4>
+					</div>
+					<div class="footer-grid-info">
+						<ul>
+							<li><a href="/home/index.html">Home</a></li>
+							<!-- <li><a href="freinds.html">About</a></li> -->
+							<!-- <li><a href="groups.html">Gallery</a></li>
+							<li><a href="icons.html">Icons</a></li>
+							<li><a href="codes.html">Short Codes</a></li>
+							<li><a href="order.html">Contact</a></li> -->
+						</ul>
+					</div>
+				</div>
+			
+				<div class="clearfix"> </div>
+			</div>
+			
+		</div>
+	</div>
+  </body>
+</html>

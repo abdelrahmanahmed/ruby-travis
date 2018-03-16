@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="col-md-12 ">
+  <div class="agileinfo-heading" style="padding-bottom: 10px">
+    <h4> <strong>  Group Name:</strong>  <%= @group.name %></h4>
+
+
+<div class="col-md-12 ">
+  <div class="agileinfo-heading" style="padding-bottom: 10px">
+    <h4> <strong>Friend List:</strong>  
+
+  </div>
+<% if @group.user.friendships.any? %>
+  <%for f in @group.user.friendships %>
+  
+<% if @list.include? f.friend_id%>
+
+   <% else %>
+  <div class="col-md-3" style="padding-bottom: 10px; padding-top: 10px">
+        <div class="col-sm-4" style="width:70px;">
+        <%=image_tag(f.friend.image.url, :width => 60, :height => 60, :crop => :fill) %>
+        </div>
+        <div class="col-sm-8 " style="padding-left: 30px">
+			<%=h f.friend.name %>
+                        <%= link_to "Add", group_users_path(:user_id => f.friend,:group_id => @group), :method => :post %>
+	     </div>
+   </div>
+   
+   <%end%>
+ <%end%>
+<%else%>
+<p>u haven't friends</p>
+<%end%>
+
+</div>
+<p>
+	<div class="col-sm-8">
+  <div class="agileinfo-heading" style="padding-bottom: 10px">
+    <h4> <strong>Group Members:</strong></h4>
+  </div>
+
+<% if @group.group_users.any? %>
+   <%for g in @group.group_users %>
+   <div class="col-md-4" style="padding-bottom: 10px; padding-top: 10px">
+        <div class="col-sm-4" style="width:70px;">
+        <%=image_tag(g.user.image.url, :width => 60, :height => 60, :crop => :fill) %>
+        </div>
+        <div class="col-sm-8 " style="padding-left: 30px">
+			<%=h g.user.name %>
+           <%= link_to "remove", group_user_url(g), :method => :delete %>
+	    </div>
+   </div>
+<%end%>
+<%end%>
+</ul>
+</p>
+
+
+
+
+<%= link_to 'Back', groups_path %>
+
+</div>
+<div class="col-sm-4">
+<%= link_to 'Edit Group Name', edit_group_path(@group) , class: "btn btn-danger btn-lg"%> 
+</div>
+

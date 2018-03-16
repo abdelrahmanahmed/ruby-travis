@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  orderFrom: MyString
+  menuImage: MyString
+  user: one
+
+two:
+  type: 
+  orderFrom: MyString
+  menuImage: MyString
+  user: two
