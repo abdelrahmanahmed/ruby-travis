@@ -1,5 +1,5 @@
 language: ruby
+before_script:
+  - mysql -e 'create database Yalla-Notlop_test;'
 rvm:
- - 2.2
- - jruby
- - rbx-3
+  - 2.2
