@@ -7,7 +7,7 @@ env:
   - DB=mysql
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - mysql -e 'create database myapp_test'      
+  - bundle exec rake db:create
   - export DISPLAY=:99.0
 
   
